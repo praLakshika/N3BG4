@@ -10,7 +10,7 @@ $("#users_userlist").ready(function () {
             <div class="personal-info-wrap">
                 <div class="widget-head-info-box">
                     <div class="persoanl-widget-hd">
-                        <h2>${value.username}</h2>
+                        <h2 class="username_header_id" >${value.username}</h2>
                         <p>${value.email}</p>
                     </div>
                     <img src="${value.profilePicture}" class="img-circle circle-border m-b-md center" alt="profile"  width="150" height="150">
@@ -29,7 +29,7 @@ $("#users_userlist").ready(function () {
                 
             </div>
         </div>
-        <br>`;
+        `;
 
            
         });

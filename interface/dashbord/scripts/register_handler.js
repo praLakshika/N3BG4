@@ -14,7 +14,8 @@ $("#buyer_registration_form").submit(function (event) {
                 "email": $("#registration_inputEmail").val(),
                 "passwordHash": passwordHash.toUpperCase(),
                 "profilePicture": reader.result,
-                "username": $("#registration_inputUsername").val()
+                "username": $("#registration_inputUsername").val(),
+                "userType":"d"
             }
             
             $.ajax("http://localhost:8080/sellnbye/api/user", {
