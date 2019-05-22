@@ -15,7 +15,7 @@ $("#products_productlist").ready(function () {
                     <h2 class="proId" >${value.productId}</h2>
                         <p>${value.creator}</p>
                     </div>
-                    <img src="${value.productImage}" class="img-circle circle-border m-b-md center" alt="profile"  width="150" height="150">
+                    <img src="${value.productImage}" class=" m-b-md center" alt="profile"  width="500" height="500">
                     <input type="hidden" id="proId" name="proId" value="${value.productId}">
                     <div class="social-widget-result">
                         <span>${value.productPrice}</span> <br>

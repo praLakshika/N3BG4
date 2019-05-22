@@ -16,20 +16,91 @@ $("#users_userlist").ready(function () {
                     <img src="${value.profilePicture}" class="img-circle circle-border m-b-md center" alt="profile"  width="150" height="150">
                     <div class="social-widget-result">
                         <span>${value.userType}</span> <br>
-                        <span><button type="button" id="user_editUser_btn" class="btn btn-primary">
-                        EDIT
-                    </button></span> |
+                        <span>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                     Edit
+                    </button>
+                    </span> |
                         <span> <button type="button" id="user_deleteUser_btn" class="btn btn-danger">
                         DELETE
                     </button></span>
-                       
+                    <!-- Button trigger modal -->
+                    
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                          <form id="edituser_form" class="form-horizontal">
+                          <div class="row">
+
+                          <h3  style="color:red;">User name</h3>
+                          <h2 class="username_header_id" style="color:DodgerBlue;">${value.username}</h2>
+                              
+                              <div class="form-group col-lg-12">
+                                  <label style="color:red;" >Contact Number</label>
+                                  <input  class="form-control" type="text" id="registration_inputContactnumber" placeholder="Contact Number" required="" value="${value.contactNo}">
+                              </div>
+                              <div class="form-group col-lg-12">
+                                  <label style="color:red;">Email Address</label>
+                                  <input  class="form-control" type="Email" id="registration_inputEmail" placeholder="Email" required=""  value="${value.email}">
+                              </div>
+                              
+                              
+                          </div>
+                          
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <input class="btn btn-primary loginbtn" type="submit" name="submitAccount" value="Update" class="exclusive shopBtn" value="Edit">
+               
+                          </div>
+
+                      </form>
+                        </div>
+                      </div>
+                    </div>
                       
                     </div>
                 </div>
                 
             </div>
         </div>
-        `;
+        1 <script >
+$("#edituser_form").submit(function (event) {
+    event.preventDefault();
+    alert("Added successfully");
+    var requestData = {
+        username : $("#edituser_inputUsername").val(),
+        isActive : $("#edituser_isActive").prop('checked'),
+        contactNo : $("#edituser_inputContactnumber").val(),
+        email : $("#edituser_inputEmail").val()
+    };
+    console.log(requestData);
+
+    $.ajax("http://localhost:8080/sellnbye/api/user", {
+                data: JSON.stringify(requestData),
+                contentType: 'application/json',
+                type: 'PUT'
+            }).done(function (response) {
+                if (response === true) {
+                    location.reload();
+                    alert("Edited successfully");
+                }
+                else {
+                    alert("Editing user failed");
+                }
+            });
+
+    $('#exampleModal').modal('toggle');
+});</script>`;
 
            
         });
@@ -92,7 +163,7 @@ $('body').on('click', '#user_deleteUser_btn', function (event) {
 
 $("#edituser_form").submit(function (event) {
     event.preventDefault();
-
+    alert("Added successfully");
     var requestData = {
         username : $("#edituser_inputUsername").val(),
         isActive : $("#edituser_isActive").prop('checked'),
