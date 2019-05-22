@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS paf_n3a_g6_database;
+CREATE DATABASE IF NOT EXISTS paf_n3b_g4;
 
-use paf_n3a_g6_database;
+use paf_n3b_g4;
 
 CREATE TABLE IF NOT EXISTS users (
     username VARCHAR(255) NOT NULL,
